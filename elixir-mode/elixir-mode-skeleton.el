@@ -44,5 +44,7 @@
   (set-buffer "mix-project-functions")
   (erase-buffer)
   (cd mix_root)
+  (message "load module functions in projects...")
   (setq result (shell-command-to-string "mix run ~/.emacs.d/lisp/elixir-mode/extract_project_functions.ex"))
-  (insert result))
+  (insert result)
+  (message "load module functions ... done."))
