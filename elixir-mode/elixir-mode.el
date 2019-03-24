@@ -130,7 +130,7 @@
                                       "defoverridable")
                                   symbol-end))
       (builtin-namespace . ,(rx symbol-start
-                                (or "import" "require" "use" "alias")
+                                (or "import" "require" "use" "alias" "plug")
                                 symbol-end))
       ;; Set aside code point syntax for negation face.
       (code-point . ,(rx symbol-start
