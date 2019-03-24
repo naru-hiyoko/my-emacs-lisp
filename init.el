@@ -1,6 +1,8 @@
 ;; Append following line to ~/.emacs.d/init.el
 ;; (load-file "~/.emacs.d/lisp/init.el")
 
+(kill-buffer "*scratch*")
+
 (add-to-list 'load-path "~/.emacs.d/lisp/elixir-mode/")
 (add-to-list 'load-path "~/.emacs.d/lisp/plantuml-mode/")
 
@@ -9,7 +11,7 @@
 (require 'plantuml-mode)
 
 (defun set-elixir-mode-config ()
-  (load-file "~/.emacs.d/lisp/elixir-mode-snippet.el"))
+  (load-file "~/.emacs.d/lisp/elixir-mode/elixir-mode-skeleton.el"))
 
 (defun set-markdown-mode-config ()
   (setq indent-tabs-mode t)
@@ -50,14 +52,24 @@
 
 (set-face-attribute 'region nil :background "#666")
 
+;; Custome functions
+(defun kill-current-buffer ()
+  (interactive "")
+  (setq b (buffer-name (current-buffer)))
+  (kill-buffer b)
+  (list-buffers)
+  (message (concat "delete buffer: " b)))
+
 ;; Key Bindings
 (define-key global-map [?¥] [?\\] )
 (global-set-key "\C-h" 'delete-backward-char)
 (global-set-key (kbd "C-m") nil)
 (global-set-key (kbd "M-r") 'replace-string)
 (global-set-key (kbd "M-z") 'undo)
-(global-set-key "\M-g" 'goto-line)
-(global-set-key "\M-c" 'compile)
+(global-set-key (kbd "M-g") 'goto-line)
+(global-set-key (kbd "M-/") 'dabbrev-expand)
+(global-set-key (kbd "C-/") 'dabbrev-completion)
+(global-set-key (kbd "C-x k") 'kill-current-buffer)
 (global-set-key "\C-o" nil)
 (global-set-key (kbd "C-<SPC>") nil)
 (global-set-key (kbd "M-<SPC>") 'set-mark-command)
