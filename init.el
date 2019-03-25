@@ -63,18 +63,20 @@
 ;; Key Bindings
 (define-key global-map [?¥] [?\\] )
 (global-set-key "\C-h" 'delete-backward-char)
+(global-set-key (kbd "C-<SPC>") nil)
+(global-set-key (kbd "M-<SPC>") 'set-mark-command)
+(global-set-key (kbd "<RET>") 'newline)
 (global-set-key (kbd "C-m") nil)
+(global-set-key (kbd "\C-o") nil)
+
+(global-set-key (kbd "C-/") 'dabbrev-expand)
+(global-set-key (kbd "M-/") 'dabbrev-completion)
+
 (global-set-key (kbd "M-r") 'query-replace)
 (global-set-key (kbd "M-z") 'undo)
 (global-set-key (kbd "M-g") 'goto-line)
-(global-set-key (kbd "C-/") 'dabbrev-expand)
-(global-set-key (kbd "M-/") 'dabbrev-completion)
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
-(global-set-key "\C-o" nil)
-(global-set-key (kbd "C-<SPC>") nil)
-(global-set-key (kbd "M-<SPC>") 'set-mark-command)
 (global-set-key (kbd "S-M-<SPC>") 'rectangle-mark-mode)
-(global-set-key (kbd "<RET>") 'newline)
 (global-font-lock-mode t)
 
 (setq kill-whole-line t)
