@@ -36,9 +36,10 @@
     ("" (message "select one of (atom | float | string | int | list | map | tuple)"))
     (otherwise (skeleton-insert snippet))))
 
-(defun import_mix_project_funtions (mix_root)
+(defun import_mix_project_funtions ()
   "Extract loaded functions in mix project to buffer."
-  (interactive "s MIX_ROOT:")
+  (interactive)
+  (setq mix_root (read-file-name "Mix Root: "))
   (setq c_buf (current-buffer))
   (get-buffer-create "mix-project-functions")
   (set-buffer "mix-project-functions")
