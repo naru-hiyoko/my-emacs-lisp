@@ -14,7 +14,8 @@
   (load-file "~/.emacs.d/lisp/elixir-mode/elixir-mode-skeleton.el"))
 
 (defun set-markdown-mode-config ()
-  (setq indent-tabs-mode t)
+  (setq indent-tabs-mode nil)
+  (setq tab-width 2)
   (set (make-local-variable 'whitespace-action) nil))
 
 (defun set-plantuml-mode-config ()
