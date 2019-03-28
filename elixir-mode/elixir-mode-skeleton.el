@@ -8,7 +8,7 @@
   '("" nil > "use" " " "Croma.SubtypeOfString, pattern: " _ \n))
 
 (defvar croma_int_snippet
-  '("" nil > "use" " " "Croma.SubtypeOfInt, min: " _ " max: " \n))
+  '("" nil > "use" " " "Croma.SubtypeOfInt, min: " _ ", max: " \n))
 
 (defvar croma_list_snippet
   '("" nil > "use" " " "Croma.SubtypeOfList, elem_module: " _ ", min_length: , max_length: " \n))
@@ -19,11 +19,15 @@
 (defvar croma_tuple_snippet
   '("" nil > "use" " " "Croma.SubtypeOfTuple, elem_modules: [" _ "]" \n))
 
+(defvar croma_struct_snippet
+  '("" nil > "use Croma.Struct, recursive_new?: true, fields: [" _ "]"))
+
 
 (defun croma-skeleton-insert (module)
   "Insert snippet of specified sub module of croma struct."
   (interactive "s Module Name (atom, string, int...):")
   (setq snippet (pcase module
+                  ("struct" croma_struct_snippet)
                   ("atom" croma_atom_snippet)
                   ("float" croma_float_snippet)
                   ("string" croma_string_snippet)
