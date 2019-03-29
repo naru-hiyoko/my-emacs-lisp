@@ -401,7 +401,7 @@
       ((and (not (smie-rule-hanging-p))
             (smie-rule-prev-p "OP"))
        (- elixir-smie-indent-basic))
-      ((smie-rule-parent-p "def" "defun" "defp" "defpt" "defmacro" "defmacrop")
+      ((smie-rule-parent-p "def" "defun" "defp" "defunp" "defmacro" "defmacrop")
        (smie-rule-parent))
       (t (smie-rule-parent))))
     (`(:after . "OP")
