@@ -81,6 +81,8 @@
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
 (global-set-key (kbd "S-M-<SPC>") 'rectangle-mark-mode)
 (global-set-key (kbd "<RET>") 'newline)
+
+(which-function-mode 1)
 (global-font-lock-mode t)
 
 (setq kill-whole-line t)
