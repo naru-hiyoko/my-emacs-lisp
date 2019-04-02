@@ -40,7 +40,15 @@
     ("" (message "select one of (atom | float | string | int | list | map | tuple)"))
     (otherwise (skeleton-insert snippet))))
 
-(defun import_mix_project_funtions ()
+(defun import-mix-project-functions ()
+  (interactive)
+  (setq c_buf (current-buffer))
+  (get-buffer-create "mix-project-functions")
+  (set-buffer "mix-project-functions")
+  (find-file "~/.emacs.d/lisp/elixir-functions-dict")
+  (set-buffer c_buf))
+
+(defun re-import-mix-project-funtions ()
   "Extract loaded functions in mix project to buffer."
   (interactive)
   (setq mix_root (read-file-name "Mix Root: "))
