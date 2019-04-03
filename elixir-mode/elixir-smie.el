@@ -123,6 +123,8 @@
                   ("defun" non-block-expr "COMMA" "do:" non-block-expr)
                   ("defpt" non-block-expr "do" statements "end")
                   ("defpt" non-block-expr "COMMA" "do:" non-block-expr)
+                  ("defunpt" non-block-expr "do" statements "end")
+                  ("defunpt" non-block-expr "COMMA" "do:" non-block-expr)
                   ("fn" non-block-expr "end")
                   ("defmodule" non-block-expr "do" statements "end")
                   ("describe" non-block-expr "do" statements "end")

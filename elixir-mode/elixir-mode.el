@@ -67,6 +67,7 @@
     ("Public Functions" "^\\s-*defun[ \n\t]+\\([a-z0-9_!\\?]+\\)\\(([^)]*)\\)*.*" 1)
     ("Private Functions" "^\\s-*defp[ \n\t]+\\([a-z0-9_!\\?]+\\)\\(([^)]*)\\)*.*" 1)
     ("Private Functions" "^\\s-*defpt[ \n\t]+\\([a-z0-9_!\\?]+\\)\\(([^)]*)\\)*.*" 1)
+    ("Private Functions" "^\\s-*defunpt[ \n\t]+\\([a-z0-9_!\\?]+\\)\\(([^)]*)\\)*.*" 1)
     ("Public Macros" "^\\s-*defmacro[ \n\t]+\\([a-z0-9_!\\?]+\\)\\(([^)]*)\\)*.*" 1)
     ("Private Macros" "^\\s-*defmacrop[ \n\t]+\\([a-z0-9_!\\?]+\\)\\(([^)]*)\\)*.*" 1)
     ("Delegates" "^\\s-*defdelegate[ \n\t]+\\([a-z0-9_]+\\)\\(([^)]*)\\)*.*" 1)
@@ -123,7 +124,7 @@
                           "with")
                       symbol-end))
       (builtin-declaration . ,(rx symbol-start
-                                  (or "def" "defun" "defp" "defpt" "test" "describe" "defmodule" "defprotocol"
+                                  (or "def" "defun" "defp" "defpt" "defunpt" "test" "describe" "defmodule" "defprotocol"
                                       "defmacro" "defmacrop" "defdelegate"
                                       "defexception" "defstruct" "defimpl"
                                       "defguard" "defguardp" "defcallback"
@@ -139,7 +140,7 @@
                          symbol-end))
       (function-declaration . ,(rx (or line-start (not (any ".")))
                                    symbol-start
-                                   (or "def" "defp" "defun" "defpt" "test" "describe")
+                                   (or "def" "defp" "defun" "defpt" "defunpt" "test" "describe")
                                    symbol-end))
       ;; The first character of an identifier must be a letter or an underscore.
       ;; After that, they may contain any alphanumeric character + underscore.
