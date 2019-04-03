@@ -61,3 +61,8 @@
   (setq result (shell-command-to-string "mix run ~/.emacs.d/lisp/elixir-mode/extract_project_functions.ex"))
   (insert result)
   (message "load module functions ... done."))
+
+(defun mix-test ()
+  "Run test for current buffer file"
+  (interactive)
+  (message (buffer-file-name (current-buffer))))
