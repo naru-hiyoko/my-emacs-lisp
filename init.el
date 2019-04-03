@@ -99,7 +99,7 @@
 
 (fset 'yes-or-no-p 'y-or-n-p)
 (show-paren-mode 1)
-(setq show-paren-style 'mixed)
+;(setq show-paren-style 'mixed)
 (global-linum-mode 1)
 (setq linum-format "%4d:")
 (setq which-function-mode 1)
