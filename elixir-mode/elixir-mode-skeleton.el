@@ -62,7 +62,25 @@
   (insert result)
   (message "load module functions ... done."))
 
-(defun mix-test ()
-  "Run test for current buffer file"
+(defun execute-mix-task (task-name)
+  (setq mix (executable-find "mix"))
+  (setq filename (buffer-file-name (current-buffer)))
+  (setq proc (start-process-shell-command "mix-task" "*mix-task*" mix task-name filename))
+  (set-process-sentinel proc 'run-mix-task-teardown))
+
+(defun run-mix-task-teardown (proc status)
+  (setq ps (process-status proc))
+  (if (eq ps 'exit)
+      (if (eq 0 (process-exit-status proc))
+          (message "-- ok. --")
+        (message "-- error. --"))
+    (message "mix task process abnormally exits.")))
+
+(defun mix-run ()
+  "Run script in mix project."
   (interactive)
-  (message (buffer-file-name (current-buffer))))
+  (execute-mix-task "run"))
+
+(defun mix-test ()
+  (interactive)
+  (execute-mix-task "test"))
