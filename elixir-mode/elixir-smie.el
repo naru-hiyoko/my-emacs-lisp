@@ -125,7 +125,6 @@
                   ("defunp" non-block-expr "COMMA" "do:" non-block-expr)
                   ("defunpt" non-block-expr "do" statements "end")
                   ("defunpt" non-block-expr "COMMA" "do:" non-block-expr)
-                  ("fn" non-block-expr "end")
                   ("defmodule" non-block-expr "do" statements "end")
                   ("describe" non-block-expr "do" statements "end")
                   ("test" non-block-expr "do" statements "end")
@@ -790,8 +789,8 @@
       ((and (smie-rule-parent-p "else")
             (smie-rule-hanging-p))
        (smie-rule-parent elixir-smie-indent-basic))
-      ((smie-rule-parent-p "catch" "def" "defun" "defmodule" "defp" "defunp" "do" "else"
-                           "fn" "if" "rescue" "try" "unless" "defmacro" "defmacrop")
+      ((smie-rule-parent-p "catch" "defmodule" "do" "else"
+                           "if" "rescue" "try" "unless" "defmacro" "defmacrop")
        (smie-rule-parent))
       ((smie-rule-parent-p "after")
        (smie-rule-parent elixir-smie-indent-basic))
