@@ -65,7 +65,7 @@
 (global-set-key (kbd "C-<SPC>") nil)
 (global-set-key (kbd "M-<SPC>") 'set-mark-command)
 (global-set-key (kbd "C-m") nil)
-(global-set-key (kbd "\C-o") nil)
+(global-set-key (kbd "\C-o") 'other-window)
 
 (global-set-key (kbd "C-/") 'dabbrev-expand)
 (global-set-key (kbd "M-/") 'dabbrev-completion)
