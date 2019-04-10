@@ -114,7 +114,7 @@
 
 ;; Face Settings
 (set-face-attribute 'default nil :family "Menlo" :height 160)
-(setq initial-frame-alist '( (top . 0) (left . 0) (width . 100) (height . 50)))
+(setq initial-frame-alist '( (top . 0) (left . 0) (width . 150) (height . 50)))
 
 ;; Scroll Settings
 (defun scroll-down-with-lines ()
