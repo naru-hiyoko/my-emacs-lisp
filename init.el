@@ -75,6 +75,9 @@
 (global-set-key (kbd "M-<up>") 'next-buffer)
 (global-set-key (kbd "M-<down>") 'previous-buffer)
 
+(global-set-key (kbd "M-+") 'text-scale-increase)
+(global-set-key (kbd "M-_") 'text-scale-decrease)
+
 (global-set-key (kbd "M-r") 'query-replace)
 (global-set-key (kbd "M-z") 'undo)
 (global-set-key (kbd "M-g") 'goto-line)
