@@ -53,14 +53,6 @@
 
 (set-face-attribute 'region nil :background "#666")
 
-;; Custome functions
-(defun kill-current-buffer ()
-  (interactive "")
-  (setq b (buffer-name (current-buffer)))
-  (kill-buffer b)
-  (list-buffers)
-  (message (concat "delete buffer: " b)))
-
 ;; Key Bindings
 (define-key global-map [?¥] [?\\] )
 (global-set-key "\C-h" 'delete-backward-char)
