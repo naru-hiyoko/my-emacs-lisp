@@ -95,7 +95,7 @@
 (setq inhibit-startup-message t)
 (setq ring-bell-function 'ignore)
 (setq global-hl-line t)
-(setq toggle-truncate-lines t)
+(setq-default truncate-lines t)
 
 ;; (add-hook 'after-change-major-mode-hook (lambda() (electric-indent-mode -1)))
 
