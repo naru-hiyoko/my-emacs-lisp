@@ -5,7 +5,7 @@
   '("" nil > "use" " " "Croma.SubtypeOfFloat, " "min: " _ ", max: " \n))
 
 (defvar croma_string_snippet
-  '("" nil > "use" " " "Croma.SubtypeOfString, pattern: " _ \n))
+  '("" nil > "use" " " "Croma.SubtypeOfString, pattern: ~R/\\A" _ "\\z/" \n))
 
 (defvar croma_int_snippet
   '("" nil > "use" " " "Croma.SubtypeOfInt, min: " _ ", max: " \n))
