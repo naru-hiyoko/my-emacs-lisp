@@ -116,23 +116,11 @@
        (statements (statement)
                    (statement ";" statements))
        (statement
-        ;("defmodule" non-block-expr "do" statements "end")
-        ;("describe" non-block-expr "do" statements "end")
-        ;("test" non-block-expr "do" statements "end")
-        ;("if" non-block-expr "do" statements "else" statements "end")
-        ;("if" non-block-expr "do" statements "end")
-        ;("if" non-block-expr "COMMA"
-        ; "do:" non-block-expr "COMMA"
-                                        ; "else:" non-block-expr)
         ("try" "do" statements "after" statements "end")
         ("try" "do" statements "catch" match-statements "end")
         ("try" "do" statements "rescue" match-statements "end")
         ("try" "do" statements "end")
-        ("case" non-block-expr "do" match-statements "end")
-        ;("for" non-block-expr "COMMA" "do:" non-block-expr)
-        ;("for" non-block-expr "COMMA" "into:" non-block-expr "COMMA" "do" statements "end")
-                                        ;("for" non-block-expr "COMMA" "into:" non-block-expr "COMMA" "do:" non-block-expr)
-        )
+        ("case" non-block-expr "do" match-statements "end"))
        (non-block-expr (non-block-expr "OP" non-block-expr)
                        ("(" non-block-expr ")")
                        ("{" non-block-expr "}")
@@ -164,7 +152,7 @@
   (rx "->" (0+ nonl)))
 
 (defvar elixir-smie--backslash-regexp
-  (rx "//" (0+ nonl)))
+  (rx "\\" (0+ nonl)))
 
 (defvar elixir-smie--oneline-def-operator-regexp
   (rx "do:" (0+ nonl)))
@@ -319,8 +307,8 @@
           "MATCH-STATEMENT-DELIMITER"
         (if (and (looking-back ",$" (- (point) 3) t)
                  (not (> (nth 0 (syntax-ppss)) 0)))
-	    "COMMA"
-	  ";")))
+            "COMMA"
+          ";")))
      ((looking-back elixir-smie--block-operator-regexp (- (point) 3) t)
       (goto-char (match-beginning 0))
       "->")
@@ -346,6 +334,7 @@
     value))
 
 (defun elixir-smie-rules (kind token)
+  (message token)
   (pcase (cons kind token)
     (`(:list-intro . ";")
      -4)
@@ -411,7 +400,7 @@
       ((and (not (smie-rule-hanging-p))
             (smie-rule-prev-p "OP"))
        (- elixir-smie-indent-basic))
-      ((smie-rule-parent-p "def" "defun" "defp" "defunp" "defmacro" "defmacrop")
+      ((smie-rule-parent-p "def" "defp" "defmacro" "defmacrop")
        (smie-rule-parent))
       (t (smie-rule-parent))))
     (`(:after . "OP")
