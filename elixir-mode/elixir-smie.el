@@ -174,6 +174,9 @@
 (defvar elixir-smie--block-operator-regexp
   (rx "->" (0+ nonl)))
 
+(defvar elixir-smie--backslash-regexp
+  (rx "//" (0+ nonl)))
+
 (defvar elixir-smie--oneline-def-operator-regexp
   (rx "do:" (0+ nonl)))
 
@@ -209,6 +212,13 @@
     (forward-line -1)
     (move-end-of-line 1)
     (looking-back elixir-smie--block-operator-regexp (- (point) 3) t)))
+
+(defun elixir-smie-last-line-end-with-backslash-p ()
+  "Return non-nil if the previous line ends with a `\\'."
+  (save-excursion
+    (forward-line -1)
+    (move-end-of-line 1)
+    (looking-back elixir-smie--backslash-regexp (- (point) 3) t)))
 
 (defun elixir-smie-last-line-start-with-block-operator-p ()
   (save-excursion
