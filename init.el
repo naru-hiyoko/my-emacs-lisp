@@ -11,6 +11,8 @@
 (require 'plantuml-mode)
 
 (defun set-elixir-mode-config ()
+  (global-set-key (kbd "TAB") 'tab-to-tab-stop)
+  (setq tab-width 2)
   (load-file "~/.emacs.d/lisp/elixir-mode/elixir-mode-skeleton.el"))
 
 (defun set-markdown-mode-config ()
@@ -19,6 +21,7 @@
   (set (make-local-variable 'whitespace-action) nil))
 
 (defun set-plantuml-mode-config ()
+  (global-set-key (kbd "TAB") 'tab-to-tab-stop)
   (setq tab-width 2))
 
 (add-hook 'elixir-mode-hook 'set-elixir-mode-config)
