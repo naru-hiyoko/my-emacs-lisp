@@ -547,9 +547,10 @@ just return nil."
   (set (make-local-variable 'beginning-of-defun-function) #'elixir-beginning-of-defun)
   (set (make-local-variable 'end-of-defun-function) #'elixir-end-of-defun)
 
-  (smie-setup elixir-smie-grammar 'verbose-elixir-smie-rules
-              :forward-token 'elixir-smie-forward-token
-              :backward-token 'elixir-smie-backward-token))
+;  (smie-setup elixir-smie-grammar 'verbose-elixir-smie-rules
+;              :forward-token 'elixir-smie-forward-token
+;              :backward-token 'elixir-smie-backward-token))
+  )
 
 ;; Invoke elixir-mode when appropriate
 
