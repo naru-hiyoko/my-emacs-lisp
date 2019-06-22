@@ -62,16 +62,23 @@
   (setq b (buffer-name (current-buffer)))
   (kill-buffer b))
 
+(defun forward-5-lines ()
+  (interactive "")
+  (forward-line 5))
+
+(defun backward-5-lines ()
+  (interactive "")
+  (forward-line -5))
+
 ;; Key Bindings
 (define-key global-map [?¥] [?\\] )
 (global-set-key "\C-h" 'delete-backward-char)
 (global-set-key (kbd "C-<SPC>") nil)
 (global-set-key (kbd "M-<SPC>") 'set-mark-command)
 (global-set-key (kbd "C-m") nil)
-(global-set-key (kbd "\C-o") 'other-window)
+(global-set-key (kbd "C-o") 'other-window)
 
-(global-set-key (kbd "C-/") 'dabbrev-expand)
-(global-set-key (kbd "M-/") 'dabbrev-completion)
+(global-set-key (kbd "C-/") 'hippie-expand)
 
 (global-set-key (kbd "M-<up>") 'next-buffer)
 (global-set-key (kbd "M-<down>") 'previous-buffer)
@@ -82,6 +89,8 @@
 (global-set-key (kbd "M-r") 'query-replace)
 (global-set-key (kbd "M-z") 'undo)
 (global-set-key (kbd "M-g") 'goto-line)
+(global-set-key (kbd "M-n") 'forward-5-lines)
+(global-set-key (kbd "M-p") 'backward-5-lines)
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
 (global-set-key (kbd "S-M-<SPC>") 'rectangle-mark-mode)
 (global-set-key (kbd "<RET>") 'newline)
@@ -104,6 +113,7 @@
 
 (fset 'yes-or-no-p 'y-or-n-p)
 (show-paren-mode 1)
+(setq column-number-mode t)
 ;(setq show-paren-style 'mixed)
 (global-linum-mode 1)
 (setq linum-format "%4d:")
