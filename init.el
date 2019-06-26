@@ -79,6 +79,7 @@
 (global-set-key (kbd "C-o") 'other-window)
 
 (global-set-key (kbd "C-/") 'hippie-expand)
+(global-set-key (kbd "M-/") 'hippie-expand)
 
 (global-set-key (kbd "M-<up>") 'next-buffer)
 (global-set-key (kbd "M-<down>") 'previous-buffer)
@@ -94,6 +95,7 @@
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
 (global-set-key (kbd "S-M-<SPC>") 'rectangle-mark-mode)
 (global-set-key (kbd "<RET>") 'newline)
+(global-set-key (kbd "C-M-f") 'toggle-frame-maximized)
 
 (which-function-mode 1)
 (global-font-lock-mode t)
