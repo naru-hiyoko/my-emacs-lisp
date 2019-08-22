@@ -28,10 +28,14 @@
   (global-set-key (kbd "TAB") 'tab-to-tab-stop)
   (setq tab-width 2))
 
+(defun set-js-mode-config ()
+  (setq tab-width 2))
+
 (add-hook 'elixir-mode-hook 'set-elixir-mode-config)
 (add-hook 'markdown-mode-hook 'set-markdown-mode-config)
 (add-hook 'plantuml-mode-hook 'set-plantuml-mode-config)
 (add-hook 'sh-mode-hook 'set-sh-mode-config)
+(add-hook 'js-mode-hook 'set-js-mode-config)
 
 (global-whitespace-mode t)
 (setq-default indent-tabs-mode nil)
