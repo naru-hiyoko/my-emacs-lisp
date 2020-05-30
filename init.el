@@ -108,8 +108,11 @@
 
 (global-set-key (kbd "M-<right>") 'next-buffer)
 (global-set-key (kbd "M-<left>") 'previous-buffer)
-(global-set-key (kbd "M-<up>") 'other-window)
-(global-set-key (kbd "M-<down>") 'other-window)
+
+(global-set-key (kbd "S-M-<up>") 'other-window)
+(global-set-key (kbd "S-M-<down>") 'other-window)
+(global-set-key (kbd "S-M-<right>") 'other-window)
+(global-set-key (kbd "S-M-<left>") 'other-window)
 
 (global-set-key (kbd "C-<right>") 'forward-word)
 (global-set-key (kbd "C-<left>") 'backward-word)
