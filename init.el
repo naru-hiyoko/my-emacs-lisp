@@ -86,7 +86,7 @@
    ((equal nil (buffer-file-name)) (next-buffer))
    ))
 
-(defadvice next-buffer (after avoid-messages-buffer-in-previous-buffer)
+(defadvice previous-buffer (after avoid-messages-buffer-in-previous-buffer)
   (cond
    ((equal "*ansi-term*" (buffer-name)))
    ((equal nil (buffer-file-name)) (previous-buffer))
