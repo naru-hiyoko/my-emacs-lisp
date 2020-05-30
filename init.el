@@ -1,7 +1,7 @@
 ;; Append following line to ~/.emacs.d/init.el
 ;; (load-file "~/.emacs.d/lisp/init.el")
 
-(kill-buffer "*scratch*")
+;; (kill-buffer "*scratch*")
 
 (add-to-list 'load-path "~/.emacs.d/lisp/elixir-mode/")
 (add-to-list 'load-path "~/.emacs.d/lisp/plantuml-mode/")
@@ -17,7 +17,7 @@
 
 (defun set-markdown-mode-config ()
   (setq indent-tabs-mode nil)
-  (setq tab-width 2)
+  (setq tab-width 4)
   (set (make-local-variable 'whitespace-action) nil))
 
 (defun set-plantuml-mode-config ()
@@ -30,14 +30,12 @@
 
 (defun set-python-mode-config ()
   (setq indent-tabs-mode nil)
-  (setq tab-width 2)
-  (setq python-indent-offset 2))
+  (setq tab-width 4))
 
 (add-hook 'elixir-mode-hook 'set-elixir-mode-config)
 (add-hook 'markdown-mode-hook 'set-markdown-mode-config)
 (add-hook 'plantuml-mode-hook 'set-plantuml-mode-config)
 (add-hook 'sh-mode-hook 'set-sh-mode-config)
-(add-hook 'python-mode-hook 'set-python-mode-config)
 
 (global-whitespace-mode t)
 (setq-default indent-tabs-mode nil)
@@ -82,19 +80,39 @@
   (interactive "")
   (forward-line -5))
 
+(defadvice next-buffer (after avoid-messages-buffer-in-next-buffer)
+  (cond
+   ((equal "*ansi-term*" (buffer-name)))
+   ((equal nil (buffer-file-name)) (next-buffer))
+   ))
+
+(defadvice next-buffer (after avoid-messages-buffer-in-previous-buffer)
+  (cond
+   ((equal "*ansi-term*" (buffer-name)))
+   ((equal nil (buffer-file-name)) (previous-buffer))
+   ))
+
+;; activate the advice
+(ad-activate 'next-buffer)
+(ad-activate 'previous-buffer)
+
 ;; Key Bindings
 (define-key global-map [?¥] [?\\] )
 (global-set-key "\C-h" 'delete-backward-char)
 (global-set-key (kbd "C-<SPC>") nil)
 (global-set-key (kbd "M-<SPC>") 'set-mark-command)
 (global-set-key (kbd "C-m") nil)
-(global-set-key (kbd "C-o") 'other-window)
 
 (global-set-key (kbd "C-/") 'hippie-expand)
 (global-set-key (kbd "M-/") 'hippie-expand)
 
-(global-set-key (kbd "M-<up>") 'next-buffer)
-(global-set-key (kbd "M-<down>") 'previous-buffer)
+(global-set-key (kbd "M-<right>") 'next-buffer)
+(global-set-key (kbd "M-<left>") 'previous-buffer)
+(global-set-key (kbd "M-<up>") 'other-window)
+(global-set-key (kbd "M-<down>") 'other-window)
+
+(global-set-key (kbd "C-<right>") 'forward-word)
+(global-set-key (kbd "C-<left>") 'backward-word)
 
 (global-set-key (kbd "M-+") 'text-scale-increase)
 (global-set-key (kbd "M-_") 'text-scale-decrease)
