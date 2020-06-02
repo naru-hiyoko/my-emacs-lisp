@@ -96,6 +96,14 @@
 (ad-activate 'next-buffer)
 (ad-activate 'previous-buffer)
 
+(setq hippie-expand-try-functions-list
+      '(
+        try-expand-dabbrev
+        try-expand-dabbrev-all-buffers
+        try-complete-file-name-partially
+        try-complete-file-name
+        ))
+
 ;; Key Bindings
 (define-key global-map [?¥] [?\\] )
 (global-set-key "\C-h" 'delete-backward-char)
